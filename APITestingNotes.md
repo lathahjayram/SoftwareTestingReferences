@@ -14,7 +14,7 @@
 A computer where you are trying to access the application. EX: Browser
 ### Server:
 from where application is installed and from where you are able to exactly accessing
-![Alt text](Client-server-model.svg.png)
+![alt text](Images/Client-server-model.svg.png)
 
 # Client-Server Architecture
 
@@ -27,22 +27,22 @@ Server – is a computer/device/machine which accepts the HTTP request sent by c
 ## Types of Client-Server Architecture
 
 ### 1 Tier Architecture
-![alt text](Tier1Archite.webp)
+![alt text](Images/Tier1Archite.webp)
 
 1 tier architecture –>where Data and Application resides in one machine. Presentation, Business, Data Access layers within a single software package. The data is usually stored in the local system or a shared drive. Application such as MS Office come under one-tier application.
 
 ### 2 Tier Architecture
-![alt text](2TierArchite.png)
+![alt text](Images/2TierArchite.png)
 
 2 tier architecture –>where Client resides at one system and database server is at another system. We can have multiple clients. For instance, online ticket reservations software use the two-tier architecture.
 
 ### 3 Tier Architecture
-![alt text](3TierArchite.png)
+![alt text](Images/3TierArchite.png)
 
 3 tier architecture--> In 3 tier architecture, we need Internet. This is applicable mainly for web applications. We have client (Browser), DB server (where we store our data). In between client and server, there is business logic layer (which is called as middle layer).
 
 #### 3 Layers here:
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 1. Client layer/Client Server/Presentation Layer/UI
 2. Business Logic Layer/Application layer/Application server/Web server
 3. Database Layer/Database server
@@ -66,10 +66,10 @@ Testing done on database layer is called **Database testing**.
 ## What is API?
 **Application programming Interface:** It is a way of communicating between two applications where applications may differ in their platforms or in terms of technology.
 
-![alt text](image-2.png)
+![alt text](Images/image-2.png)
 
 Exmaple: 
-![alt text](MakemytripApi.png)
+![alt text](Images/MakemytripApi.png)
 
 ## Types of APIs
 #### 1. SOAP : Simple Object Access Protocol 
@@ -84,20 +84,20 @@ Exmaple:
  > 2. All Web services are APIs , All APIs are not web services.
  > 3. A web services needs a network while a API doesn't need a network for it's opertions.
 
-![alt text](image-3.png)
+![alt text](Images/image-3.png)
 
 ##### API >> devloped and testing before moving to production/web environment/Public.
 ##### Web Services >> API which is devloped and tested then moved to Internet/production/web environment/Public is called as Web services.
 
 ## REST API HTTP METHODS
-![alt text](REST_API.png)
+![alt text](Images/REST_API.png)
 
 REST API Methods: CRUD opertions
-![alt text](REST_API_Methods.png)
+![alt text](Images/REST_API_Methods.png)
 
 ## HTTP vs HTTPS protocal
 
-![alt text](image-4.png)
+![alt text](Images/image-4.png)
 
 ### Terminologies:
 ```console
@@ -106,7 +106,7 @@ URL : Uniform Resource Locator
 URN : Uniform Resource Name
 ```
 
-![alt text](URI_URL_URN.png)
+![alt text](Images/URI_URL_URN.png)
 
 Feature and Resource
 **Feature:** Term used in manual testing to test some functionality.
@@ -117,7 +117,7 @@ Feature and Resource
 1. Request Payload:  data given while resquesting (body> PUT, POST)
 2. Response Payload: data recevied as response for the request(body>json)
 
-![alt text](RequestandResponsePayload.png)
+![alt text](Images/RequestandResponsePayload.png)
 
 # Day 2
 Concpets:
