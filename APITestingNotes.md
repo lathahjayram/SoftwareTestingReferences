@@ -143,7 +143,7 @@ operations can be performed in a collection: create, rename, delete and run coll
 we can create n number of collections under a workspace.
 
 ![alt text](Images/ReqAPIRes.png)
-Validation is done with the Response provided by the API
+Validation is done on the Response provided by the API
 
 Types of requests can be created under collection:
  ```
@@ -244,3 +244,4 @@ When it comes to deleting something on the server, we should be cautious. We are
 > Call the GET method for the deleted customer, which should return 404, as the resource no longer exists.
 
 Testfully’s Multi-step tests allow you to create resources on the fly and use them for testing DELETE endpoints.
+
