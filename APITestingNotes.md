@@ -136,4 +136,111 @@ Postman can be used through website or application.
 
 Postman website![alt text](Images/Postman.png)
 
+How to use postman to test api:
+1. Create a workspace, workspace: area where we maintain and save files.
+2. Create a collection, conatins number of folders and HTTP requests.
+operations can be performed in a collection: create, rename, delete and run collection
+we can create n number of collections under a workspace.
 
+![alt text](Images/ReqAPIRes.png)
+Validation is done with the Response provided by the API
+
+Types of requests can be created under collection:
+ ```
+ GET -> Retrieving a single or multiple resources.
+ POST -> Creating a new resource.
+ PATCH -> Updating a resource.
+ PUT -> Updating resource if exists / Creating new resource if it doesn't exist.
+ DELETE -> Destroying a resource.
+ ```
+
+## GET Method
+If we want to retrieve data from a resource like websites, servers or APIs, we send them a GET Request. For example, we send a GET request to the server if we want a list of our customers or a specific customer.
+
+Example of HTTP GET request
+![alt text](Images/GET.png)
+
+Since the GET method should never change the data on the resources and just read them(read-only), it is considered a Safe Method. Additionally, the Get method is idempotent.
+
+### How to test an API with a GET method?
+When we want to test an API, the most popular method that we would use is the GET method. Therefore, We expect the following to happen.
+
+> If the resource is accessible, the API returns the 200 Status Code, which means OK.
+Along with the 200 Status Code, the server usually returns a response body in XML or JSON format. So, for example, we expect the [GET] /members endpoint to return a list of members in XML or JSON.
+
+> If the server does not support the endpoint, the server returns the 404 Status Code, which means Not Found.
+
+> If we send the request in the wrong syntax, the server returns the 400 Status Code, which means Bad Request.
+
+## POST Method
+The POST method creates a new resource on the backend (server). The request body carries the data we want to the server. It is neither a safe nor idempotent method. We don’t expect to get the same result every time we send a POST request. For example, two identical POST requests will create two new equivalent resources with the same data and different resource ids.
+
+When sending a POST request to a server, we expect the following to happen:
+
+> Ideally, if the POST request has created a new resource on the other side, the response should come with 201 Status Code which means Created.
+
+> Sometimes, performing a POST request doesn’t return a resource at the given URL; in this case, the method will return 204 status code which means No content.
+
+Example of HTTP POST request
+![alt text](Images/POST.png)
+
+### How to test a POST endpoint
+Since the POST method creates data, we must be cautious about changing data; testing all the POST methods in APIs is highly recommended. Moreover, make sure to delete the created resource once your testing is finished.
+
+Here are some suggestions that we can do for testing APIs with POST methods:
+
+> Create a resource with the POST method, and it should return the 201 Status Code.
+
+> Perform the GET method to check if it created the resource was successfully created. You should get the 200 status code, and the response should contain the created resource.
+
+> Perform the POST method with incorrect or wrong formatted data to check if the operation fails.
+
+## PUT Method
+With the PUT request method, we can update an existing resource by sending the updated data as the content of the request body to the server. The PUT method updates a resource by replacing its entire content completely. If it applies to a collection of resources, it replaces the whole collection, so be careful using it. The server will return the 200 or 204 status codes after the existing resource is updated successfully.
+
+Example of HTTP PUT request
+![alt text](Images/PUT.png)
+
+### How to test an API with a PUT method?
+The PUT method is idempotent, and it modifies the entire resources, so to test that behavior, we make sure to do the following operations:
+
+> Send a PUT request to the server many times, and it should always return the same result.
+When the server completes the PUT request and updates the resource, the response should come with 200 or 204 status codes.
+
+> After the server completes the PUT request, make a GET request to check if the data is updated correctly on the resource.
+
+>If the input is invalid or has the wrong format, the resource must not be updated.
+
+## PATCH Method
+PATCH is another HTTP method that is not commonly used. Similar to PUT, PATCH updates a resource, but it updates data partially and not entirely. For example, to make it more precise, the request [PUT] customers/{customerid} would update the fields in the Customers entity on the resource entirely. However, the PATCH method does update the provided fields of the customer entity. In general, this modification should be in a standard format like JSON or XML.
+
+Example of HTTP PATCH request
+![alt text](Images/PATCH.png)
+
+### How to test an API with a PATCH method?
+To test an API with the PATCH method, follow the steps discussed in this article for the testing API with the PUT and the POST methods. Consider the following results:
+
+> Send a PATCH request to the server; the server will return the 2xx HTTP status code, which means: the request is successfully received, understood, and accepted.
+
+> Perform the GET request and verify that the content is updated correctly.
+
+> If the request payload is incorrect or ill-formatted, the operation must fail.
+
+## DELETE Method
+As the name suggests, the DELETE method deletes a resource. The DELETE method is idempotent; regardless of the number of calls, it returns the same result.
+
+Most APIs always return the 200 status code even if we try to delete a deleted resource but in some APIs, If the target data no longer exists, the method call would return a 404 status code.
+
+Example of HTTP DELETE request
+![alt text](Images/DELETE.png)
+
+### How to test a DELETE endpoint?
+When it comes to deleting something on the server, we should be cautious. We are deleting data, and it is critical. First, make sure that deleting data is acceptable, then perform the following actions.
+
+> Call the POST method to create a new resource. Never test DELETE with actual Data. For example, first, create a new customer and then try to delete the customer you just created.
+
+> Make the DELETE request for a specific resource. For example, the request [DELETE] /customers/ {customer-id} deletes a customer with thee specified customer Id.
+
+> Call the GET method for the deleted customer, which should return 404, as the resource no longer exists.
+
+Testfully’s Multi-step tests allow you to create resources on the fly and use them for testing DELETE endpoints.
